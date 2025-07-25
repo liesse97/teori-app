@@ -49,7 +49,7 @@ className='flex gap-3 flex-col mt-7'
 {data[questionIndex]?.options?.map((option,key)=>{
 
 // Determine the class for each option based on whether it is selected and correct
-    let optionClass = 'border-2 border-solid rounded-2xl p-2 py-4 text-xl font-semibold'
+    let optionClass = 'border-2 border-solid rounded-2xl p-2 py-3 text-l font-semibold'
     if ((optionIndex === option.key)  && isCorrect == true) {
         optionClass +=  ' bg-green-700 text-white';
     } else if (optionIndex === option.key && isCorrect == false) {
@@ -61,6 +61,7 @@ className='flex gap-3 flex-col mt-7'
     key={option.key} 
     className={optionClass}
     onClick={ ()=>AnswerQuestions(option,option.key)}
+
     >
 {option.text}
 </li>
