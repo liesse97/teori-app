@@ -1,0 +1,14 @@
+     :root {
+            --primary-color: #FF4D4D;
+            --primary-color-light: #FFEDED;
+            --background-color: #F9FAFB;
+            --card-background: #FFFFFF;
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --progress-bar-bg: #E5E7EB;
+            --selected-border: #FF4D4D;
+            --correct-bg: #D1FAE5;
+            --correct-border: #10B981;
+            --incorrect-bg: #FEE2E2;
+            --incorrect-border: #EF4444;
+        }
