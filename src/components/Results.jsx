@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Results = () => {
-    
+
 return (
 <main className="flex justify-center items-center flex-col text-center">
 <section className ="w-90 border-2 border-solid rounded-2xl shadow-2xl p-5 "> 
@@ -35,7 +35,9 @@ return (
     <p  className="border-2 border-solid rounded-2xl p-2">Incorrect Answers 10</p>
 
 <div className="items-center my-20">
-    <button className="w-40 bg-blue-500 text-white px-4 py-2 rounded-full">Retry</button>
+    <button className="w-40 bg-blue-500 text-white px-4 py-2 rounded-full">
+        Retry
+        </button>
 </div>
 
 </section>
