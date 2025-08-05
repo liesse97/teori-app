@@ -14,6 +14,7 @@ If you are developing a production application, we recommend using TypeScript wi
 ## To do
  ### - Dynamnisk Result page
  ### - Generate Teori Questions
- ### - Backend n0e + sql(Myqsl??)
+ ### - LocalStorage
+ ### - Backend: node + sql(Myqsl??)
 
 
