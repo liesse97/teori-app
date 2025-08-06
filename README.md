@@ -14,7 +14,7 @@ If you are developing a production application, we recommend using TypeScript wi
 ## To do
  ### - If Question chosen, Make sure taht no other question can be chosen on the same set.
  ### - Progress bar?? In results element
- ### - Dynamnisk Result page (Retry btn should work)
+ ### - Dynamnisk Result page (Retry btn should work) : Done
  ### - Generate Teori Questions
  ### - LocalStorage
  ### - Backend: node + sql(Myqsl??)

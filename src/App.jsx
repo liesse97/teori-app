@@ -7,9 +7,11 @@ function App() {
 
   return (
      <Routes>
-            <Route path="/results" element={<Results />} />
 
       <Route path="/" element={<Card />} />
+      <Route path="/results" element={<Results />} />
+
+
     </Routes>
 
   )

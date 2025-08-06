@@ -22,9 +22,8 @@ return (
 <div className="flex justify-center items-center flex-col h-full ">
 <div className ="w-90 border-2 border-solid rounded-2xl shadow-2xl p-5"> 
 <p> Question {questionNumber} of {totalQuestions}</p>
-<p> Result {result} of {totalQuestions}</p>
 
-<h1 className ="text-4xl font-bold mt-5">{data[questionIndex].question}</h1>
+<h1 className ="text-3xl font-bold mt-5">{data[questionIndex].question}</h1>
 <img 
 
 className =" h-60 m-auto  my-4"  alt="Traffic sign"
@@ -45,19 +44,21 @@ if ((optionIndex === option.key)  && isCorrect == true) {
 } else if (optionIndex !== null && optionIndex !== option.key){
     optionClass += " bg-gray-300 text-black cursor-not-allowed opacity-50";
 }
+
 return(
 <li 
 key={option.key} 
 className={optionClass}
 onClick={ ()=>AnswerQuestions(option,option.key)}
-
 >
 {option.text}
 </li>
+
 )
 })}
 
 </ul>
+
 <BtnCard />
 
 </div>

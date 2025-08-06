@@ -1,7 +1,33 @@
 import React from 'react'
+import { useQuizContext } from '../contexts/QuizContext'
+
 
 const Results = () => {
+      const {result,IncorrectQuestion,resultPercentage,resetQuiz} = useQuizContext();
 
+      let progress = 100 - resultPercentage;
+      
+
+
+
+    // Determine the class and text based on the result percentage
+      let progressClass;
+      let progressText;
+      let progressTextClass;
+      let txtChange = 'Failed'
+        if (progress > 55){
+            progressClass = 'stroke-current text-red-600 dark:text-red-500';
+            progressText = 'text-center text-5xl font-bold text-red-600 dark:text-red-500';
+            progressTextClass = "text-xl text-red-600 dark:text-red-500 block"
+            
+        } else if (progress => 55){
+            progressClass = 'stroke-current text-green-600 dark:text-green-500';
+            progressText = 'text-center text-5xl font-bold text-green-600 dark:text-green-500';
+            progressTextClass = "text-xl text-green-600 dark:text-green-500 block"
+            txtChange = 'Passed'
+
+
+        }
 return (
 <main className="flex justify-center items-center flex-col text-center">
 <section className ="w-90 border-2 border-solid rounded-2xl shadow-2xl p-5 "> 
@@ -17,13 +43,13 @@ return (
 <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 dark:text-neutral-700" stroke-width="2"></circle>
   
     {/*Progress Circle */}
-<circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-blue-600 dark:text-blue-500" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="65" stroke-linecap="round"></circle>
+<circle cx="18" cy="18" r="16" fill="none" class={progressClass} stroke-width="2" stroke-dasharray="100" stroke-dashoffset={progress} stroke-linecap="round"></circle>
 </svg>
 
 {/*Percentage Text */}
 <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-<span class="text-center text-5xl font-bold text-blue-600 dark:text-blue-500">85%</span>
-    <span class="text-xl text-blue-600 dark:text-blue-500 block">Passed</span>
+<span class={progressText}>{resultPercentage}%</span>
+    <span class={progressTextClass}>{txtChange}</span>
 
 </div>
 </div>
@@ -31,11 +57,13 @@ return (
 
     </div>
 
-    <p className="border-2 border-solid rounded-2xl p-2 mb-5">Correct Answers  40</p>
-    <p  className="border-2 border-solid rounded-2xl p-2">Incorrect Answers 10</p>
+    <p className="border-2 border-solid rounded-2xl p-2 mb-5 bg-green-200">Correct Answers  {result}</p>
+    <p  className="border-2 border-solid rounded-2xl p-2 bg-red-200">Incorrect Answers {IncorrectQuestion}</p>
 
 <div className="items-center my-20">
-    <button className="w-40 bg-blue-500 text-white px-4 py-2 rounded-full">
+    <button 
+    className="w-40 border-2 border-solid px-4 py-2 rounded-full cursor-pointer"
+    onClick={resetQuiz}>
         Retry
         </button>
 </div>
