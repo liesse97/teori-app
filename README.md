@@ -1,13 +1,18 @@
 ## To do
- ### - If Question chosen, Make sure taht no other question can be chosen on the same set.
- ### - Progress bar?? In results element
+ ### - LocalStorage (data only in results? Only have forwards btn)
+ ### - Add explanation
  ### - Generate Teori Questions
- ### - LocalStorage
+ ### - Prod + Netifly
+ ### - Add in portfolio
  ### - Backend: node + sql(Myqsl??)
  
 
 ## Done: 
  ### - Dynamnisk Result page (Retry btn should work) 
+ ### -If choosen wrong, show the right answer
+ ### - If Question chosen, Make sure taht no other question can be chosen on the same set.
+ ### - Progress bar
+
 
 
 ## React + Vite + Tailwind

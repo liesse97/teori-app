@@ -27,13 +27,12 @@ const [optionIndex, setOptionIndex] = useState(null);   // Index of the selected
 const [result, setResult] = useState(0); // Number of correct answers
 
 
-
-
 // Adjusting to display question number starting from 1
 let questionNumber = questionIndex + 1; 
 const totalQuestions = data.length;
 let IncorrectQuestion = totalQuestions - result;
 let resultPercentage = (result / totalQuestions) * 100;
+let progressBar = questionNumber / totalQuestions * 100;
 
 
 // Function to handle the next question
@@ -55,14 +54,19 @@ setQuestionIndex(prevIndex => questionIndex - 1);
 }
 }
 
+
+
 // Function to handle answering a question
 function AnswerQuestions(option,key) {
+// only if no option is selected yet
+  if (optionIndex === null) {
 // Check if the current question has a correct answer.
 setOptionIndex(key);
 setIsCorrect(option.isCorrect);
 // If the answer is correct, increment the result count.
 if (option.isCorrect=== true){
     setResult(prevResult => prevResult +1);
+}
 }
 
 }
@@ -84,9 +88,9 @@ function resetQuiz() {
         questionIndex,
         optionIndex,
         isCorrect,
-        result,
         IncorrectQuestion,
         resultPercentage,
+        progressBar,
         resetQuiz,
         handlePrevious,
         handleNext,
