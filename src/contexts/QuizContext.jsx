@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import data from '../assets/data/data.js'
+import { getItem,setItem } from '../utils/localeStorage.jsx'
 
 
 // Create a context for the quiz
@@ -23,15 +24,30 @@ const navigate = useNavigate();
 // State variables to manage quiz data
 const [questionIndex, setQuestionIndex] = useState(0); // Current question index
 const [isCorrect, setIsCorrect] = useState(null);  // Whether is the answer correct or not
-const [optionIndex, setOptionIndex] = useState(null);   // Index of the selected option
-const [result, setResult] = useState(0); // Number of correct answers
+const [optionIndex, setOptionIndex] = useState(null); 
+  // Local storage to save the result even after page refresh
+//Easier way
+  /*const [result, setResult] = useState(()=>{
+return JSON.parse(localStorage.getItem('result')) || 0;
+});*/
+
+//Difficult way but more secure and robust
+const [result, setResult] = useState(()=>{
+const item = localStorage.getItem('result');
+return item? JSON.parse(item) : 0;
+});// Number of correct answers
+
+// Effect to update the localStorage whenever the result changes
+useEffect(() => {
+  setItem('result', result);
+}, [result]);
 
 
 // Adjusting to display question number starting from 1
 let questionNumber = questionIndex + 1; 
 const totalQuestions = data.length;
-let IncorrectQuestion = totalQuestions - result;
-let resultPercentage = (result / totalQuestions) * 100;
+
+
 let progressBar = questionNumber / totalQuestions * 100;
 
 
@@ -88,8 +104,6 @@ function resetQuiz() {
         questionIndex,
         optionIndex,
         isCorrect,
-        IncorrectQuestion,
-        resultPercentage,
         progressBar,
         resetQuiz,
         handlePrevious,

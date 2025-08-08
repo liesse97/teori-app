@@ -4,8 +4,6 @@ import data from '../assets/data/data.js'
 import BtnCard from './BtnCard.jsx';
 
 
-
-
 const Card = () => {
 const {
     questionNumber,
@@ -48,7 +46,6 @@ src = {`/image/${data[questionIndex].image}`}
 <ul className='flex gap-3 flex-col mt-7'>
 
 {data[questionIndex]?.options?.map((option)=>{
-console.log('option', option.isCorrect)
 
 // Determine the class for each option based on whether it is selected and correct
 

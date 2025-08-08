@@ -1,5 +1,6 @@
 ## To do
- ### - LocalStorage (data only in results? Only have forwards btn)
+ ### - LocalStorage (Save data only in results? Only have forwards btn)
+ ### - icon in retry btn
  ### - Add explanation
  ### - Generate Teori Questions
  ### - Prod + Netifly

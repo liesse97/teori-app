@@ -3,8 +3,10 @@ import { useQuizContext } from '../contexts/QuizContext'
 
 
 const Results = () => {
-      const {result,IncorrectQuestion,resultPercentage,resetQuiz} = useQuizContext();
+      const {result,totalQuestions,resetQuiz} = useQuizContext();
 
+      let IncorrectQuestion = totalQuestions - result;
+     let resultPercentage = (result / totalQuestions) * 100;
       let progress = 100 - resultPercentage;
       
 
