@@ -28,12 +28,12 @@ const Results = () => {
       let progressText;
       let progressTextClass;
       let txtChange = 'Failed'
-        if (progress > 55){
+        if (progress > 60){
             progressClass = 'stroke-current text-red-600 dark:text-red-500';
             progressText = 'text-center text-5xl font-bold text-red-600 dark:text-red-500';
             progressTextClass = "text-xl text-red-600 dark:text-red-500 block"
             
-        } else if (progress => 55){
+        } else if (progress => 60){
             progressClass = 'stroke-current text-green-600 dark:text-green-500';
             progressText = 'text-center text-5xl font-bold text-green-600 dark:text-green-500';
             progressTextClass = "text-xl text-green-600 dark:text-green-500 block"

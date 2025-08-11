@@ -1,7 +1,6 @@
 ## To do
  ### - icon in retry btn
- ### - Choose how many question you get (5,10,20)
- ### - Prod + Netifly
+ ### - Choose how many question you get (5,10,20). Should be randomly
  ### - Add in portfolio
  ### - Backend: node + sql(Myqsl??)
  
@@ -10,11 +9,13 @@
  ### - LocalStorage (Save data only in results? Only have forwards btn)
  ### - Dynamnisk Result page (Retry btn should work) 
  ### - If choosen wrong, show the right answer
- ### - If Question chosen, Make sure taht no other question can be chosen on the same set.
+ ### - If Question chosen, Make sure that no other question can be chosen on the same set.
  ###  - When refresh data in homepage, results doesn't refresh but continue where it left off
  ### - Progress bar
  ### - Teori Questions
-### - Add explanation
+ ### - Add explanation
+ ### - Prod + Netifly
+
 
 
 
