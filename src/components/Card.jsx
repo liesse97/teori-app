@@ -15,7 +15,9 @@ const {
     isCorrect
 } = useQuizContext();
 
-let progress = 25;
+
+// Hide or show explation based on option being selected
+let hideExplanation = optionIndex !== null ? 'mt-5 block' : 'hidden';
 
 return (
 
@@ -36,14 +38,16 @@ class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 tex
 
 
 {/* Display the current question text and image */}
-<h1 className ="text-3xl font-bold mt-5">{data[questionIndex].question}</h1>
+<h1 className ="text-3xl font-bold mt-7 ">{data[questionIndex].question}</h1>
 
+{data[questionIndex].image && (
 <img 
-className =" h-60 m-auto  my-4"  alt="Traffic sign"
+className =" h-50 m-auto  my-4"  alt="Question image"
 src = {`/image/${data[questionIndex].image}`}
 />
+)}
 
-<ul className='flex gap-3 flex-col mt-7'>
+<ul className='flex gap-3 flex-col mt-15'>
 
 {data[questionIndex]?.options?.map((option)=>{
 
@@ -59,6 +63,7 @@ optionClass +=  " bg-red-700 text-white";
 optionClass += " bg-gray-300 text-black cursor-not-allowed opacity-50";
 } 
 
+
 return(
 <li 
 key={option.key} 
@@ -73,6 +78,22 @@ onClick={ ()=>AnswerQuestions(option,option.key)}
 
 </ul>
 
+
+
+{/* Display the explanation if available */}
+{data[questionIndex].explanation && (
+    
+// Hide or show explation based on option being selected
+
+// Hide or show explation based on option being selected
+
+    <div className={hideExplanation}>
+    <h2 className="text-xl font-semibold">Förklaring:</h2>
+    <p className="text-gray-700">{data[questionIndex].explanation}</p>
+    </div>
+)}
+
+{/* Button to navigate to the next question */}
 <BtnCard />
 
 </div>

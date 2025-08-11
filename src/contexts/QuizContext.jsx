@@ -37,8 +37,16 @@ const item = localStorage.getItem('result');
 return item? JSON.parse(item) : 0;
 });// Number of correct answers
 
+useEffect(() => {
+ if (questionIndex === 0 && optionIndex === null) 
+    {
+      setResult(0); // Reset result when starting a new quiz
+    }
+  }, [questionIndex]);
+
 // Effect to update the localStorage whenever the result changes
 useEffect(() => {
+ 
   setItem('result', result);
 }, [result]);
 

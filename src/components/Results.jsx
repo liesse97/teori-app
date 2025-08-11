@@ -1,5 +1,6 @@
-import React from 'react'
 import { useQuizContext } from '../contexts/QuizContext'
+import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 
 
 const Results = () => {
@@ -8,6 +9,16 @@ const Results = () => {
       let IncorrectQuestion = totalQuestions - result;
      let resultPercentage = (result / totalQuestions) * 100;
       let progress = 100 - resultPercentage;
+
+        const navigate = useNavigate();
+
+    const navType = performance.getEntriesByType("navigation")[0]?.type;
+
+    if (navType === "reload") {
+      navigate("/"); // 👈 flytta användaren
+      console.log("Sidan laddades om");
+    }
+
       
 
 

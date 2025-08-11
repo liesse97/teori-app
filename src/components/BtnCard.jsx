@@ -6,7 +6,7 @@ const BtnCard = () => {
   const {optionIndex,handlePrevious,handleNext,} = useQuizContext();
 
   return (
-        <div className='justify-center items-center text-center mt-10 '>
+        <div className='justify-center items-center text-center mt-10 mb-3'>
 
     {/*</div><div className='flex justify-between mt-10'>
 <button 
