@@ -1,6 +1,9 @@
 import React from 'react'
+import { useQuizContext } from '../contexts/QuizContext'
+import '../components/Card.css'
 
 const WelcmScreen = () => {
+    const {handleDataLength} = useQuizContext();
 return (
 <div>
 <main className="flex justify-center items-center flex-col text-center">
@@ -15,22 +18,22 @@ className='w-50 h-50 mx-auto my-5 rounded-4xl' />
 </p>
 <p className='text-l mt-10'> How many questions do you want to tackle?</p>
 
-<div className='flex justify-center items-center flex-col mt-5'>
+<div className='flex justify-center items-center flex-col mt-6 mb-10'>
 
  {/* Build function to handle button (send number)*/}
 <button
-className='bg-blue-600 text-white font-semibold py-2 px-15 rounded-full mt-5'
-onClick={() => window.location.href = '/'}
+class='btnDataLegnth'
+onClick={() => handleDataLength(5)}
 > 5 Questions</button>
 
 <button
-className='border-blue-600 border-2 border-solid font-semibold py-2 px-15 rounded-full mt-5'
-onClick={() => window.location.href = '/'}
+class='btnDataLegnth'
+onClick={() => handleDataLength(10)}
 > 10 Questions</button>
 
 <button
-className='border-blue-600 border-2 border-solid font-semibold py-2 px-15 rounded-full mt-5 mb-10'
-onClick={() => window.location.href = '/'}
+class='btnDataLegnth'
+onClick={() => handleDataLength(20)}
 > 20 Questions</button>
 
 </div>

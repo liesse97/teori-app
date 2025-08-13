@@ -10,9 +10,9 @@ function App() {
      <Routes>
 
       <Route path="/" element={<WelcmScreen />} />
-      {/*<Route path="/" element={<Card />} />
+     <Route path="/Questions" element={<Card />} />
       <Route path="/results" element={<Results />} />
-*/}
+
 
     </Routes>
 

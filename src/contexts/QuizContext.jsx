@@ -22,9 +22,20 @@ export const QuizProvider = ({children}) => {
 const navigate = useNavigate();
 
 // State variables to manage quiz data
-const [questionIndex, setQuestionIndex] = useState(0); // Current question index
+
 const [isCorrect, setIsCorrect] = useState(null);  // Whether is the answer correct or not
 const [optionIndex, setOptionIndex] = useState(null); 
+const [dataLength, setDataLength] = useState(0); // Total number of questions
+const [randomIndexes, setRandomIndexes] = useState([]); // Randomly selected question indexes
+const [questionIndex, setQuestionIndex] = useState(0); // Current question index
+let newIndex = randomIndexes[questionIndex]  // Randomly selected questions
+
+
+console.log(questionIndex)
+
+
+
+
   // Local storage to save the result even after page refresh
 //Easier way
   /*const [result, setResult] = useState(()=>{
@@ -53,25 +64,48 @@ useEffect(() => {
 
 // Adjusting to display question number starting from 1
 let questionNumber = questionIndex + 1; 
-const totalQuestions = data.length;
+const totalQuestions = dataLength;
 
 
-let progressBar = questionNumber / totalQuestions * 100;
+let progressBar = questionNumber / totalQuestions * 100; // Calculate progress bar percentage
 
+
+// function to handle the questions length selection.
+function handleDataLength(dtNumber){
+setDataLength (dtNumber);
+  navigate('/Questions')
+}
+
+  useEffect(() => {
+    function getRandomIndexes(dataLength) {
+      let indexes = [];
+      while (indexes.length < dataLength) {
+        let randomIndex = Math.floor(Math.random() * data.length);
+        if (!indexes.includes(randomIndex)) {
+          indexes.push(randomIndex);
+        }
+      }
+      return indexes;
+    }
+
+    if (data.length >= dataLength) {
+      setRandomIndexes(getRandomIndexes(dataLength));
+    }
+  }, [dataLength]);
 
 // Function to handle the next question
 function handleNext(){
-if(questionIndex <data.length - 1){
-    setQuestionIndex(prevIndex => questionIndex + 1); 
+if(questionIndex <dataLength - 1){
+    setQuestionIndex(prevIndex => questionIndex+1); 
     setOptionIndex (null); // Reset option index for the next question
-} else if (questionIndex === data.length - 1) {
+} else if (questionIndex === dataLength - 1) {
     // At the end of the quiz here, show the results component
       navigate('/Results');
 
 }
 }
 
-// Function to handle the previous question. Maybe not needed??
+/* Not longer used, but can be used if needed in the future*/
 function handlePrevious(){
 if (questionIndex>0){
 setQuestionIndex(prevIndex => questionIndex - 1); 
@@ -113,10 +147,13 @@ function resetQuiz() {
         optionIndex,
         isCorrect,
         progressBar,
+        dataLength,
+        newIndex,
         resetQuiz,
         handlePrevious,
         handleNext,
-        AnswerQuestions 
+        AnswerQuestions,
+        handleDataLength
 
     }}>
       

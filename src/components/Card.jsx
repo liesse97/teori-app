@@ -9,11 +9,14 @@ const {
     questionNumber,
     totalQuestions,
     questionIndex,
+    newIndex,
     optionIndex,
     AnswerQuestions,
     progressBar,
-    isCorrect
+    isCorrect,
+    dataLength
 } = useQuizContext();
+
 
 
 // Hide or show explation based on option being selected
@@ -38,18 +41,18 @@ class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 tex
 
 
 {/* Display the current question text and image */}
-<h1 className ="text-3xl font-bold mt-7 ">{data[questionIndex].question}</h1>
+<h1 className ="text-3xl font-bold mt-7 ">{data[newIndex].question}</h1>
 
-{data[questionIndex].image && (
+{data[newIndex].image && (
 <img 
 className =" h-50 m-auto  my-4"  alt="Question image"
-src = {`/image/${data[questionIndex].image}`}
+src = {`/image/${data[newIndex].image}`}
 />
 )}
 
 <ul className='flex gap-3 flex-col mt-15'>
 
-{data[questionIndex]?.options?.map((option)=>{
+{data[newIndex]?.options?.map((option)=>{
 
 // Determine the class for each option based on whether it is selected and correct
 
