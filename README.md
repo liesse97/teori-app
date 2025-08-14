@@ -1,7 +1,5 @@
 ## To do
  ### - icon in retry btn
-### - Remove number in text questions
- ### - Refresh then always go to start page
  ### - Add in portfolio
  ### - Backend: node + sql(Myqsl??)
  
@@ -18,6 +16,8 @@
  ### - Prod + Netifly
  ### - Tailwind Apply.
  ### - Choose how many question you get (5,10,20). Should be randomly choosen. 
+ ### - Remove number in text questions
+ ### - Refresh then always go to start page
 
 
 

@@ -19,6 +19,7 @@ const {
 
 
 
+
 // Hide or show explation based on option being selected
 let hideExplanation = optionIndex !== null ? 'mt-5 block' : 'hidden';
 
@@ -84,7 +85,7 @@ onClick={ ()=>AnswerQuestions(option,option.key)}
 
 
 {/* Display the explanation if available */}
-{data[questionIndex].explanation && (
+{data[newIndex].explanation && (
     
 // Hide or show explation based on option being selected
 
@@ -92,7 +93,7 @@ onClick={ ()=>AnswerQuestions(option,option.key)}
 
     <div className={hideExplanation}>
     <h2 className="text-xl font-semibold">Förklaring:</h2>
-    <p className="text-gray-700">{data[questionIndex].explanation}</p>
+    <p className="text-gray-700">{data[newIndex].explanation}</p>
     </div>
 )}
 

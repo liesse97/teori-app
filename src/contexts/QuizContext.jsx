@@ -4,7 +4,6 @@ import data from '../assets/data/data.js'
 import { getItem,setItem } from '../utils/localeStorage.jsx'
 
 
-// Create a context for the quiz
 // This context will allow us to share quiz state and functions across components
 export const QuizContext = createContext();
 
@@ -13,27 +12,29 @@ export const useQuizContext = () =>{
 return useContext(QuizContext);
 }
 
-// Create a provider component
 // This component will wrap around the parts of the app that need access to the quiz context
 
 export const QuizProvider = ({children}) => {
 
-  // Use the useNavigate hook to programmatically navigate between routes
+// Use the useNavigate hook to programmatically navigate between routes
 const navigate = useNavigate();
 
-// State variables to manage quiz data
 
+
+
+// State variables to manage quiz data
 const [isCorrect, setIsCorrect] = useState(null);  // Whether is the answer correct or not
 const [optionIndex, setOptionIndex] = useState(null); 
 const [dataLength, setDataLength] = useState(0); // Total number of questions
 const [randomIndexes, setRandomIndexes] = useState([]); // Randomly selected question indexes
 const [questionIndex, setQuestionIndex] = useState(0); // Current question index
-let newIndex = randomIndexes[questionIndex]  // Randomly selected questions
 
+let newIndex = randomIndexes[questionIndex]; // Choose index utifrån Randomly selected questions // better way to do it?
 
-console.log(questionIndex)
-
-
+// Adjusting to display question number starting from 1
+let questionNumber = questionIndex + 1; 
+const totalQuestions = dataLength;
+let progressBar = questionNumber / totalQuestions * 100; // Calculate progress bar percentage
 
 
   // Local storage to save the result even after page refresh
@@ -42,7 +43,8 @@ console.log(questionIndex)
 return JSON.parse(localStorage.getItem('result')) || 0;
 });*/
 
-//Difficult way but more secure and robust
+
+//Difficult way but more secure and robust.LocalStorage
 const [result, setResult] = useState(()=>{
 const item = localStorage.getItem('result');
 return item? JSON.parse(item) : 0;
@@ -61,21 +63,24 @@ useEffect(() => {
   setItem('result', result);
 }, [result]);
 
+// Effect to navigate back to the home page if the user reloads the page
 
-// Adjusting to display question number starting from 1
-let questionNumber = questionIndex + 1; 
-const totalQuestions = dataLength;
+if (window.performance) {
+   if (performance.getEntriesByType("navigation")[0]?.type === "reload") {
+    if (window.location.pathname !== "/") {
+      window.location.href = "/";
+    }
+  }
+}
 
 
-let progressBar = questionNumber / totalQuestions * 100; // Calculate progress bar percentage
-
-
-// function to handle the questions length selection.
+// This function will be called from the QuizStart component to set the number of questions
 function handleDataLength(dtNumber){
 setDataLength (dtNumber);
   navigate('/Questions')
 }
 
+// Effect to generate random indexes for questions based on the data length
   useEffect(() => {
     function getRandomIndexes(dataLength) {
       let indexes = [];
@@ -92,6 +97,7 @@ setDataLength (dtNumber);
       setRandomIndexes(getRandomIndexes(dataLength));
     }
   }, [dataLength]);
+
 
 // Function to handle the next question
 function handleNext(){
@@ -114,6 +120,8 @@ setQuestionIndex(prevIndex => questionIndex - 1);
 
 
 
+
+
 // Function to handle answering a question
 function AnswerQuestions(option,key) {
 // only if no option is selected yet
@@ -129,6 +137,7 @@ if (option.isCorrect=== true){
 
 }
 
+// Function to reset the quiz
 function resetQuiz() {
   setQuestionIndex(0);
   setIsCorrect(null);
