@@ -6,8 +6,6 @@ import WelcmScreen from './components/WelcmScreen';
 
 function App() 
 {
-
-
   return (
      <Routes>
       <Route path="/" element={<WelcmScreen />} />

@@ -92,7 +92,7 @@ onClick={ ()=>AnswerQuestions(option,option.key)}
 // Hide or show explation based on option being selected
 
     <div className={hideExplanation}>
-    <h2 className="text-xl font-semibold">Förklaring:</h2>
+    <h2 className="text-xl font-semibold">Explanation:</h2>
     <p className="text-gray-700">{data[newIndex].explanation}</p>
     </div>
 )}
